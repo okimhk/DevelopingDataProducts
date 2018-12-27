@@ -1,0 +1,36 @@
+---
+title: "Week 3 Assignment"
+author: "HK Kim"
+date: "December 27, 2018"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+### Peer-graded assignment: R Markdown Presentation & Plotly
+
+## Goal
+Create a web page presentation using R Markdown that features a plot created with Plotly. Host your webpage on either GitHub Pages, RPubs, or NeoCities. Your webpage must contain the date that you created the document, and it must contain a plot created with Plotly.
+
+## Diamonds dataset
+
+- "diamonds" dataset will be used in this demo.
+- Dataset looks like below:
+
+```{r diamonds, echo = FALSE, warning=FALSE}
+library(plotly)
+head(diamonds)
+```
+
+## Plotting Price against Carat
+Since diamonds dataset is quite large, we take random 2000 samples and plot price against carat. Each datapoint is color-coded by its color type.
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+
+diamonds2 <- diamonds[sample(nrow(diamonds), 2000),]
+plot_ly(x = diamonds2$carat, y=diamonds2$price, mode = "markers", color = diamonds2$color)
+
+```
+
